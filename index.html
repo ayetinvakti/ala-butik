@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Alâ Butik | Elde Dikilen Namaz Elbiseleri</title>
+<meta name="description" content="Alâ Butik: özenle, tek tek dikilen namaz elbiseleri. Seçkin kumaşlar, ölçüye özel dikim, Türkiye'nin her yerine kargo.">
+<meta name="theme-color" content="#f6d5dc">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gul:#f6d5dc; --pudra:#fbeaee; --krem:#fffafb; --seftali:#f3b9c6;
+  --gulkurusu:#c9607a; --koyu:#7a2e45; --yazi:#4a2a35; --yumusak:#8b6672;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:var(--sans);color:var(--yazi);background:var(--krem);line-height:1.7;font-size:17px}
+img,svg{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;color:var(--koyu)}
+h2{font-size:clamp(2rem,5vw,2.8rem);margin-bottom:.6rem}
+:focus-visible{outline:3px solid var(--gulkurusu);outline-offset:3px;border-radius:10px}
+.wrap{width:min(1120px,92%);margin-inline:auto}
+section{padding:5rem 0}
+.alt{background:var(--pudra)}
+.baslik{text-align:center;max-width:620px;margin:0 auto 2.8rem}
+.baslik p{color:var(--yumusak)}
+
+/* Butonlar */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font:700 1rem var(--sans);padding:.85rem 1.7rem;border-radius:999px;border:1.5px solid transparent;cursor:pointer;transition:background .25s,color .25s,box-shadow .25s,border-color .25s}
+.btn-dolgu{background:var(--gulkurusu);color:#fff;box-shadow:0 6px 18px rgba(201,96,122,.28)}
+.btn-dolgu:hover{background:var(--koyu);box-shadow:0 8px 22px rgba(122,46,69,.3)}
+.btn-ince{background:transparent;color:var(--koyu);border-color:var(--seftali)}
+.btn-ince:hover{background:var(--gul);border-color:var(--gulkurusu)}
+.btn-wp{background:#fff;color:var(--koyu);border-color:var(--seftali)}
+.btn-wp:hover{background:var(--koyu);color:#fff}
+
+/* Üst menü */
+header{position:sticky;top:0;z-index:50;background:rgba(255,250,251,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--gul)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font:600 1.7rem var(--serif);color:var(--koyu);display:flex;align-items:center;gap:.5rem}
+.logo svg{width:26px;height:26px}
+nav ul{display:flex;gap:1.8rem;list-style:none;font-weight:600;font-size:.95rem}
+nav a:hover{color:var(--gulkurusu)}
+.menu-dugme{display:none;background:none;border:1.5px solid var(--seftali);border-radius:12px;padding:.45rem .7rem;font-size:1.2rem;color:var(--koyu);cursor:pointer}
+
+/* Hero */
+.hero{padding:4.5rem 0 5rem;background:radial-gradient(circle at 85% 20%,var(--gul) 0,transparent 45%),linear-gradient(180deg,var(--pudra),var(--krem))}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:3rem;align-items:center}
+.hero h1{font-size:clamp(2.6rem,7vw,4.4rem);margin-bottom:1.1rem}
+.hero p{font-size:1.12rem;color:var(--yumusak);max-width:30em;margin-bottom:2rem}
+.hero .dugmeler{display:flex;gap:.9rem;flex-wrap:wrap}
+.vitrin{position:relative;aspect-ratio:4/5;border-radius:48% 48% 28px 28px / 36% 36% 28px 28px;background:linear-gradient(160deg,var(--gul),var(--seftali));display:grid;place-items:center;box-shadow:0 24px 50px rgba(201,96,122,.25)}
+.vitrin svg{width:62%;filter:drop-shadow(0 12px 14px rgba(122,46,69,.18))}
+.vitrin .not{position:absolute;bottom:1.2rem;left:50%;transform:translateX(-50%);background:#fff;color:var(--koyu);font:600 .9rem var(--sans);padding:.45rem 1.1rem;border-radius:999px;white-space:nowrap}
+
+/* Güven şeridi */
+.serit{background:var(--koyu);color:#fde9ee;padding:1.1rem 0;font-size:.95rem}
+.serit ul{list-style:none;display:flex;justify-content:space-between;gap:1rem 2rem;flex-wrap:wrap}
+.serit li{display:flex;gap:.5rem;align-items:center}
+
+/* Koleksiyon */
+.filtre{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.4rem}
+.filtre button{font:600 .95rem var(--sans);padding:.55rem 1.3rem;border-radius:999px;border:1.5px solid var(--seftali);background:#fff;color:var(--koyu);cursor:pointer;transition:background .2s,color .2s}
+.filtre button:hover{background:var(--gul)}
+.filtre button[aria-pressed="true"]{background:var(--gulkurusu);border-color:var(--gulkurusu);color:#fff}
+.urunler{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1.6rem}
+.urun{background:#fff;border-radius:26px;overflow:hidden;border:1px solid var(--gul);display:flex;flex-direction:column;transition:box-shadow .25s,transform .25s}
+.urun:hover{box-shadow:0 14px 30px rgba(201,96,122,.18);transform:translateY(-4px)}
+.urun[hidden]{display:none}
+.gorsel{aspect-ratio:1/1;display:grid;place-items:center;background:var(--bg,var(--gul));position:relative}
+.gorsel svg{width:52%}
+.etiket{position:absolute;top:.9rem;left:.9rem;background:#fff;color:var(--gulkurusu);font:700 .78rem var(--sans);padding:.2rem .75rem;border-radius:999px}
+.bilgi{padding:1.2rem 1.3rem 1.5rem;display:flex;flex-direction:column;gap:.45rem;flex:1}
+.bilgi h3{font-size:1.45rem}
+.bilgi p{font-size:.93rem;color:var(--yumusak);flex:1}
+.fiyat{font:600 1.25rem var(--serif);color:var(--gulkurusu)}
+.bilgi .btn{padding:.65rem 1rem;font-size:.92rem;margin-top:.4rem}
+
+/* Neden biz */
+.kartlar{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.6rem}
+.kart{background:#fff;border-radius:26px;padding:2rem 1.6rem;border:1px solid var(--gul);text-align:center}
+.kart .ikon{width:62px;height:62px;border-radius:50%;background:var(--gul);display:grid;place-items:center;margin:0 auto 1rem;font-size:1.6rem}
+.kart h3{font-size:1.4rem;margin-bottom:.4rem}
+.kart p{font-size:.95rem;color:var(--yumusak)}
+
+/* Hakkımızda */
+.hakkimizda .wrap{display:grid;grid-template-columns:.8fr 1.2fr;gap:3rem;align-items:center}
+.portre{aspect-ratio:1/1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,var(--gul) 55%,var(--seftali));display:grid;place-items:center;font:600 5rem var(--serif);color:var(--gulkurusu);box-shadow:0 20px 44px rgba(201,96,122,.2);max-width:360px;width:100%;margin-inline:auto}
+.hakkimizda p{color:var(--yumusak);margin-bottom:1rem}
+.hakkimizda p:last-of-type{margin-bottom:1.6rem}
+
+/* Süreç (gerçek bir sıra) */
+.adimlar{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.4rem;counter-reset:a}
+.adimlar li{counter-increment:a;background:#fff;border-radius:26px;padding:1.8rem 1.4rem;border:1px solid var(--gul);position:relative}
+.adimlar li::before{content:counter(a);display:grid;place-items:center;width:38px;height:38px;border-radius:50%;background:var(--gulkurusu);color:#fff;font:700 1rem var(--sans);margin-bottom:.9rem}
+.adimlar h3{font-size:1.3rem;margin-bottom:.3rem}
+.adimlar p{font-size:.93rem;color:var(--yumusak)}
+
+/* SSS */
+.sss{max-width:760px;margin-inline:auto;display:grid;gap:.9rem}
+details{background:#fff;border:1px solid var(--gul);border-radius:20px;padding:0 1.4rem}
+summary{cursor:pointer;list-style:none;font:600 1.25rem var(--serif);color:var(--koyu);padding:1.1rem 0;display:flex;justify-content:space-between;gap:1rem}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";color:var(--gulkurusu);font-size:1.5rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{padding-bottom:1.2rem;color:var(--yumusak);font-size:.97rem}
+
+/* İletişim */
+.iletisim{background:linear-gradient(160deg,var(--gul),var(--seftali));text-align:center}
+.iletisim p{max-width:34em;margin:0 auto 1.8rem;color:var(--koyu)}
+.iletisim .dugmeler{display:flex;gap:.9rem;justify-content:center;flex-wrap:wrap}
+.bilgiler{margin-top:2rem;font-size:.95rem;color:var(--koyu)}
+
+footer{background:var(--koyu);color:#fbdde5;text-align:center;padding:2rem 0;font-size:.9rem}
+footer .logo{justify-content:center;color:#fff;margin-bottom:.4rem}
+
+/* Mobil */
+@media(max-width:860px){
+  section{padding:3.6rem 0}
+  .hero .wrap,.hakkimizda .wrap{grid-template-columns:1fr}
+  .vitrin{max-width:340px;margin-inline:auto;order:-1}
+  .hero{padding-top:2.5rem}
+  .menu-dugme{display:block}
+  nav ul{display:none;position:absolute;top:68px;left:0;right:0;background:var(--krem);flex-direction:column;padding:1.2rem 5%;border-bottom:1px solid var(--gul);gap:1rem}
+  nav ul.acik{display:flex}
+  .serit ul{justify-content:center;text-align:center}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- Namaz elbisesi çizimi: tüm sayfada tekrar kullanılır -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="elbise" viewBox="0 0 120 160">
+    <path d="M60 6c-17 0-28 12-28 28 0 8 3 14 7 19-12 8-20 24-24 52l-6 47h102l-6-47c-4-28-12-44-24-52 4-5 7-11 7-19C88 18 77 6 60 6z" fill="currentColor"/>
+    <path d="M60 14c-11 0-18 8-18 20 0 10 7 17 18 17s18-7 18-17c0-12-7-20-18-20z" fill="#fff" opacity=".55"/>
+    <path d="M60 64v90M40 80c-6 22-8 44-9 74M80 80c6 22 8 44 9 74" stroke="#fff" stroke-opacity=".35" stroke-width="2" fill="none"/>
+  </symbol>
+  <symbol id="cicek" viewBox="0 0 24 24"><path d="M12 2c2 3 2 6 0 8-2-2-2-5 0-8zm0 12c2 2 2 5 0 8-2-3-2-6 0-8zM2 12c3-2 6-2 8 0-2 2-5 2-8 0zm12 0c2-2 5-2 8 0-3 2-6 2-8 0z" fill="currentColor"/><circle cx="12" cy="12" r="2.2" fill="currentColor"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a href="#ust" class="logo" aria-label="Alâ Butik ana sayfa"><svg style="color:var(--gulkurusu)"><use href="#cicek"/></svg>Alâ Butik</a>
+    <button class="menu-dugme" id="menuDugme" aria-label="Menüyü aç" aria-expanded="false" aria-controls="menu">☰</button>
+    <nav aria-label="Ana menü">
+      <ul id="menu">
+        <li><a href="#koleksiyon">Koleksiyon</a></li>
+        <li><a href="#neden">Neden Alâ?</a></li>
+        <li><a href="#hakkimizda">Hakkımızda</a></li>
+        <li><a href="#siparis">Sipariş Süreci</a></li>
+        <li><a href="#sss">Sık Sorulanlar</a></li>
+        <li><a href="#iletisim">İletişim</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="ust">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <h1>Namazın huzuru, elbisenin zarafetiyle buluşsun</h1>
+      <p>Alâ Butik'te namaz elbiseleri tek tek, özenle ve el emeğiyle dikilir. Nefes alan kumaşlar, rahat secde eden kesimler ve size özel ölçü.</p>
+      <div class="dugmeler">
+        <a href="#koleksiyon" class="btn btn-dolgu">Koleksiyonu gör</a>
+        <a href="#siparis" class="btn btn-ince">Ölçüye özel dikim</a>
+      </div>
+    </div>
+    <div class="vitrin" style="color:#fff">
+      <svg><use href="#elbise"/></svg>
+      <span class="not">Yeni sezon: pudra pembe seri</span>
+    </div>
+  </div>
+</section>
+
+<div class="serit">
+  <div class="wrap">
+    <ul>
+      <li>🌸 Tek tek, elde dikim</li>
+      <li>🧵 Ölçüye özel seçenek</li>
+      <li>📦 Türkiye'ye kargo</li>
+      <li>💬 WhatsApp'tan kolay sipariş</li>
+    </ul>
+  </div>
+</div>
+
+<section id="koleksiyon">
+  <div class="wrap">
+    <div class="baslik">
+      <h2>Koleksiyon</h2>
+      <p>Günlük kullanımdan hediyelik setlere kadar, hepsi aynı titizlikle dikildi.</p>
+    </div>
+    <div class="filtre" role="group" aria-label="Ürün filtresi">
+      <button aria-pressed="true" data-f="hepsi">Tümü</button>
+      <button aria-pressed="false" data-f="gunluk">Günlük</button>
+      <button aria-pressed="false" data-f="hediye">Hediyelik</button>
+      <button aria-pressed="false" data-f="cocuk">Çocuk</button>
+    </div>
+    <div class="urunler" id="urunler">
+      <article class="urun" data-k="gunluk">
+        <div class="gorsel" style="--bg:#f9dfe5;color:#e9a3b4"><span class="etiket">Çok satan</span><svg><use href="#elbise"/></svg></div>
+        <div class="bilgi"><h3>Pudra Günlük Elbise</h3><p>Yumuşak dokulu, nefes alan kumaş. Her gün rahatça giyilir, kolay ütülenir.</p><span class="fiyat">₺ 000</span><a class="btn btn-wp" href="#" data-urun="Pudra Günlük Elbise">WhatsApp'tan sipariş ver</a></div>
+      </article>
+      <article class="urun" data-k="gunluk">
+        <div class="gorsel" style="--bg:#fbe9ee;color:#d98298"><svg><use href="#elbise"/></svg></div>
+        <div class="bilgi"><h3>Gül Kurusu Pamuklu</h3><p>Pamuklu kumaş, geniş kesim ve rahat kol yapısı. Yaz kış kullanıma uygun.</p><span class="fiyat">₺ 000</span><a class="btn btn-wp" href="#" data-urun="Gül Kurusu Pamuklu">WhatsApp'tan sipariş ver</a></div>
+      </article>
+      <article class="urun" data-k="hediye">
+        <div class="gorsel" style="--bg:#f6d5dc;color:#c9607a"><span class="etiket">Set</span><svg><use href="#elbise"/></svg></div>
+        <div class="bilgi"><h3>Gelin Hediye Seti</h3><p>Elbise, seccade ve tesbih. Özel kutusunda, nikâh ve söz hediyesi olarak hazırlanır.</p><span class="fiyat">₺ 000</span><a class="btn btn-wp" href="#" data-urun="Gelin Hediye Seti">WhatsApp'tan sipariş ver</a></div>
+      </article>
+      <article class="urun" data-k="hediye">
+        <div class="gorsel" style="--bg:#fdeef2;color:#e7a9b9"><svg><use href="#elbise"/></svg></div>
+        <div class="bilgi"><h3>Dantelli Zarif Elbise</h3><p>Etek ucunda ince dantel işi. Bayram ve özel günlerde şık bir tercih.</p><span class="fiyat">₺ 000</span><a class="btn btn-wp" href="#" data-urun="Dantelli Zarif Elbise">WhatsApp'tan sipariş ver</a></div>
+      </article>
+      <article class="urun" data-k="cocuk">
+        <div class="gorsel" style="--bg:#fbe3e9;color:#f0b3c1"><span class="etiket">Minik</span><svg><use href="#elbise"/></svg></div>
+        <div class="bilgi"><h3>Minik Güller Çocuk</h3><p>Küçük hanımlar için hafif ve yumuşak kumaştan, kolay giyilen elbise.</p><span class="fiyat">₺ 000</span><a class="btn btn-wp" href="#" data-urun="Minik Güller Çocuk">WhatsApp'tan sipariş ver</a></div>
+      </article>
+      <article class="urun" data-k="cocuk hediye">
+        <div class="gorsel" style="--bg:#fff1f4;color:#e58aa1"><svg><use href="#elbise"/></svg></div>
+        <div class="bilgi"><h3>Anne-Kız Takımı</h3><p>Aynı kumaş ve desenle anne ve kız için iki ayrı elbise. Birlikte namaza yakışır.</p><span class="fiyat">₺ 000</span><a class="btn btn-wp" href="#" data-urun="Anne-Kız Takımı">WhatsApp'tan sipariş ver</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="neden" class="alt">
+  <div class="wrap">
+    <div class="baslik"><h2>Neden Alâ Butik?</h2><p>Namaz elbisesi sadece bir kıyafet değil; ibadetinizde sizi rahat ettirmesi gereken bir parça.</p></div>
+    <div class="kartlar">
+      <div class="kart"><div class="ikon">🧵</div><h3>El emeği dikim</h3><p>Seri üretim yok. Her elbise kesilir, dikilir ve son kez kontrol edilerek size gönderilir.</p></div>
+      <div class="kart"><div class="ikon">🌿</div><h3>Nefes alan kumaş</h3><p>Terletmeyen, tüylenmeyen ve yıkandıkça formunu koruyan kumaşlar seçilir.</p></div>
+      <div class="kart"><div class="ikon">📏</div><h3>Ölçüye özel</h3><p>Boy, kol ve bedene göre dikim yapılır. Secdede ve rükuda rahat eden kesim esastır.</p></div>
+      <div class="kart"><div class="ikon">🎁</div><h3>Hediyeye hazır</h3><p>İsterseniz özel kutu ve not kartıyla paketlenir. Hediye gönderimi için adres yeterli.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="hakkimizda" class="hakkimizda">
+  <div class="wrap">
+    <div class="portre" aria-hidden="true">Alâ</div>
+    <div>
+      <h2>Merhaba, ben Alâ</h2>
+      <p>Namaz elbiselerini tek başıma, evimdeki atölyede dikiyorum. Her parçayı o elbiseyi giyecek kişiyi düşünerek hazırlıyorum.</p>
+      <p>Amacım; abdest alıp huzurla namaza duran herkesin kendini hem rahat hem zarif hissetmesi. Kumaşı kendim seçer, kesimi ve iç dikişlerini özenle yaparım.</p>
+      <a href="#iletisim" class="btn btn-dolgu">Benimle iletişime geç</a>
+    </div>
+  </div>
+</section>
+
+<section id="siparis" class="alt">
+  <div class="wrap">
+    <div class="baslik"><h2>Sipariş nasıl verilir?</h2><p>Dört adımda, telefondan kolayca.</p></div>
+    <ol class="adimlar">
+      <li><h3>Modeli seçin</h3><p>Koleksiyondan beğendiğiniz elbisenin "WhatsApp'tan sipariş ver" düğmesine dokunun.</p></li>
+      <li><h3>Ölçülerinizi yazın</h3><p>Boy, kol boyu ve beden bilgisini gönderin. Ölçü alma konusunda yardımcı oluruz.</p></li>
+      <li><h3>Dikim ve onay</h3><p>Kumaş ve renk netleşince dikime başlanır, hazır olunca fotoğrafını gönderirim.</p></li>
+      <li><h3>Kargoya veriyoruz</h3><p>Özenle paketlenir, takip numarasıyla kapınıza kadar yola çıkar.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="sss">
+  <div class="wrap">
+    <div class="baslik"><h2>Sık sorulanlar</h2></div>
+    <div class="sss">
+      <details><summary>Ölçüye özel dikim yapıyor musunuz?</summary><p>Evet. Boy, kol ve beden ölçünüzü paylaşmanız yeterli. Standart bedenler de mevcuttur.</p></details>
+      <details><summary>Dikim ve kargo ne kadar sürer?</summary><p>Hazır modeller kısa sürede kargolanır. Ölçüye özel siparişlerde süre yoğunluğa göre değişir, sipariş sırasında net tarih söylenir.</p></details>
+      <details><summary>Kumaşlar yıkamada çeker mi, solar mı?</summary><p>Kumaşlar yıkamaya dayanıklı seçilir. Elbisenin ters çevrilip 30 derecede, hassas programda yıkanması önerilir.</p></details>
+      <details><summary>Değişim veya iade var mı?</summary><p>Hazır ürünlerde, kullanılmamış olması şartıyla değişim yapılabilir. Ölçüye özel dikimlerde bilgi için lütfen iletişime geçin.</p></details>
+      <details><summary>Nasıl ödeme yapılır?</summary><p>Ödeme yöntemi sipariş sırasında WhatsApp üzerinden netleştirilir (havale/EFT gibi).</p></details>
+    </div>
+  </div>
+</section>
+
+<section id="iletisim" class="iletisim">
+  <div class="wrap">
+    <h2>Siparişiniz için yazın</h2>
+    <p>Model, renk ya da ölçü hakkında merak ettiğiniz her şeyi sorabilirsiniz. Genellikle aynı gün içinde dönüş yapılır.</p>
+    <div class="dugmeler">
+      <a class="btn btn-dolgu" id="genelWp" href="#">WhatsApp ile yaz</a>
+      <a class="btn btn-wp" href="https://instagram.com/KULLANICI_ADINIZ" target="_blank" rel="noopener">Instagram'da takip et</a>
+    </div>
+    <p class="bilgiler">Çalışma saatleri: Hafta içi 10.00 – 19.00 · Cumartesi 10.00 – 16.00</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo"><svg style="color:var(--seftali)"><use href="#cicek"/></svg>Alâ Butik</div>
+    <p>El emeği namaz elbiseleri · © <span id="yil">2026</span> Alâ Butik</p>
+  </div>
+</footer>
+
+<script>
+  // WhatsApp numaranızı buraya yazın (ülke koduyla, başında + ve boşluk olmadan)
+  var NUMARA = "905000000000";
+  function wp(m){return "https://wa.me/" + NUMARA + "?text=" + encodeURIComponent(m);}
+
+  // Sipariş düğmeleri
+  document.querySelectorAll("[data-urun]").forEach(function(a){
+    a.href = wp("Merhaba, \"" + a.dataset.urun + "\" modeli hakkında bilgi almak ve sipariş vermek istiyorum.");
+    a.target = "_blank"; a.rel = "noopener";
+  });
+  var g = document.getElementById("genelWp");
+  g.href = wp("Merhaba, namaz elbiseleriniz hakkında bilgi almak istiyorum.");
+  g.target = "_blank"; g.rel = "noopener";
+
+  // Koleksiyon filtresi
+  var dugmeler = document.querySelectorAll(".filtre button");
+  dugmeler.forEach(function(b){
+    b.addEventListener("click", function(){
+      dugmeler.forEach(function(x){x.setAttribute("aria-pressed", x === b);});
+      document.querySelectorAll(".urun").forEach(function(u){
+        u.hidden = !(b.dataset.f === "hepsi" || u.dataset.k.split(" ").indexOf(b.dataset.f) > -1);
+      });
+    });
+  });
+
+  // Mobil menü
+  var md = document.getElementById("menuDugme"), menu = document.getElementById("menu");
+  md.addEventListener("click", function(){
+    var acik = menu.classList.toggle("acik");
+    md.setAttribute("aria-expanded", acik);
+    md.textContent = acik ? "✕" : "☰";
+  });
+  menu.addEventListener("click", function(e){
+    if(e.target.tagName === "A"){menu.classList.remove("acik");md.setAttribute("aria-expanded","false");md.textContent="☰";}
+  });
+
+  document.getElementById("yil").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
